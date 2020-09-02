@@ -44,7 +44,7 @@ class Sync implements ShouldQueue
 
         $this->info("Start syncing IPs ...");
 
-        SyncStatus::where('status', SyncStatus::UNZIPPED)->get()->each(function ($item) {
+        SyncStatus::where("status", SyncStatus::UNZIPPED)->get()->each(function ($item) {
             try {
                 $file_name = str_replace('.gz', '', $item->file_name);
                 $file_path = storage_path('app/'.$file_name);
@@ -76,7 +76,7 @@ class Sync implements ShouldQueue
             }
         });
 
-        $this->info("completely inserted to database\n");
+        $this->info("Sync done.");
 
     }
     private function info($msg) {

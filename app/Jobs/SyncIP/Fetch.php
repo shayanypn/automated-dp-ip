@@ -27,10 +27,10 @@ class Fetch implements ShouldQueue
      */
     public function handle()
     {
-        ini_set('memory_limit', '-1');
+        ini_set("memory_limit", "-1");
 
         $this->print = new ConsoleOutput();
-        $this->info('start fetching process');
+        $this->info("Start fetching & downloading");
 
         // Step 1
         $response = $this->initialFetch();
@@ -44,11 +44,11 @@ class Fetch implements ShouldQueue
         // Step 3
         $this->storeFile($url, $name, $rows);
 
-        $this->info('start fetching process finished completely.');
+        $this->info("start fetching process finished completely.");
     }
 
     private function initialFetch() {
-        $this->info('Reading JSON file ...');
+        $this->info("Reading JSON file ...");
         $response = Http::get(self::URL);
 
         if (!$response->successful())
@@ -74,7 +74,7 @@ class Fetch implements ShouldQueue
             }
         ])->get($url)->body();
         Storage::put($name, $file);
-        $this->info("File completely downloaded.");
+        $this->info("File download Done.");
     }
 
     private function storeFile($url, $name, $rows) {

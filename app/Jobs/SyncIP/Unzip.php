@@ -49,7 +49,7 @@ class Unzip implements ShouldQueue
                 $this->info($exception->getMessage());
             }
         });
-        $this->info("unzip finished completely.");
+        $this->info("unzip files done.");
     }
     private function info($msg) {
         $this->print->writeln("SyncIP::Unzip -> ".$msg);
